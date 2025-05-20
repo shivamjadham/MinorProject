@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanitation Issue</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    body.light-theme {
+      background-color: #f0f0f0;
+      color: #000;
+    }
+    body.dark-theme {
+      background: linear-gradient(to right, #485563, #29323c);
+      color: #fff;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+    }
+    .top-bar select, .top-bar button {
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+    }
+    .container {
+      padding: 2rem;
+    }
+    .card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      max-width: 700px;
+      margin: 2rem auto;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .card p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .report-btn {
+      display: block;
+      margin: 2rem auto 0;
+      padding: 0.75rem 2rem;
+      font-size: 1.1rem;
+      background: #ffd54f;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .home-btn {
+      position: absolute;
+      top: 5rem; /* Adjust this value to position the button below the toggle button */
+      right: 1rem;
+    }
+    .home-btn a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+      background-color: #4caf50;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .home-btn a:hover {
+      background-color: #45a049;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body class="dark-theme">
+  <div class="top-bar">
+    <select onchange="changeLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+    </select>
+    <button onclick="toggleTheme()">Toggle Theme</button>
+  </div>
+
+  <!-- Circular Home Button -->
+  <div class="home-btn">
+    <a href='/' title="Go to Home Page">🏠</a>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2 id="issue-title">🧼 Sanitation Issue</h2>
+      <p id="issue-desc">This section highlights common sanitation problems like waste disposal, drainage blockages, and lack of public toilets. Citizens are encouraged to report unhygienic conditions or overflowing garbage bins using the button below.</p>
+      <button class="report-btn"> <a href="/listings/category/Sanitation" style="text-decoration: none;">
+        📢 Report This Issue
+      </a></button>
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light-theme');
+      document.body.classList.toggle('dark-theme');
+    }
+
+    const translations = {
+      en: {
+        title: '🧼 Sanitation Issue',
+        desc: 'This section highlights common sanitation problems like waste disposal, drainage blockages, and lack of public toilets. Citizens are encouraged to report unhygienic conditions or overflowing garbage bins using the button below.'
+      },
+      hi: {
+        title: '🧼 स्वच्छता की समस्या',
+        desc: 'यह अनुछेद कचरे निष्कासन, नाली की बाध, और सार्वजनिक शौचालयों की कमी जैसी सामान्य स्वच्छता समस्याओं की जानकारी देता है। नागरिक गंदगी की स्थिति या ओवरफ्लो हो रहे कचरे के डिब्बों की शिकायत कर सकते हैं।'
+      }
+    };
+
+    function changeLanguage(lang) {
+      document.getElementById('issue-title').innerText = translations[lang].title;
+      document.getElementById('issue-desc').innerText = translations[lang].desc;
+    }
+  </script>
+</body>
+</html>

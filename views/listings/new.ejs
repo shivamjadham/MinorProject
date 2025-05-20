@@ -1,0 +1,101 @@
+  <% layout("/layouts/boilerplate")%>
+  <div class="row">
+        <div class="col-8 offset-2 ">
+            <h3><b>Create a New Complaint</b></h3>
+            <br><br>
+            <form method="post" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data" >
+                <div class="mb-3">
+                   <label for="title" class="form-label">Title</label> 
+                   <input name="listing[title]" 
+                   placeholder="Add a catchy title"
+                    type="text"
+                   class="form-control"
+                   required/>
+                   <div class="valid-feedback">Titel looks good</div>
+                </div>
+                
+                 <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea 
+                    name="listing[description]"
+                    class="form-control"
+                    required ></textarea>
+                    <div class="invalid-feedback">please enter the short description</div>
+                  <br><br> 
+                  
+                </div>
+        
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Upload Image</label>
+                    <input name="listing[image]"
+                     placeholder="enter image URL/link" 
+                     type="file"
+                     class="form-control"
+                     required
+                     />
+                </div>
+        
+                <div class="row">
+                    <!-- <div class="col-md-4">
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Date</label>
+                            <input name="listing[price]" 
+                            placeholder="dd-mm-yy"
+                            
+                             class="form-control"
+                             required/>
+                             <div class="invalid-feedback">price should be valid</div>
+                        </div>
+                    </div> -->
+                    
+                 <div class="col-md-8">
+                    <div class="mb-3 ">
+                        <label for="country" class="form-label">District</label>
+                        <input name="listing[country]"
+                         placeholder="India" 
+                        type="text"
+                        class="form-control" 
+                        required/>
+                        <div class="invalid-feedback">country should be valid </div>
+                     </div>
+                 </div>
+                </div>
+
+                <!-- ------------------------------------------------------ -->
+
+                <div class="col-md-8">
+                    <div class="mb-3 ">
+                        <label for="category" class="form-label">Category</label>
+                        <select id="category" name="listing[category]">
+                            <option value="RoadDamage">RoadDamage</option>
+                            <option value="WaterSupply">WaterSupply</option>
+                            <option value="Electricity">Electricity</option>
+                            <option value="Sanitation">Sanitation</option>
+                            <option value="HealthCare">HealthCare</option>
+                            <option value="Education">Education </option>
+                           
+                        </select>
+                       <div class="invalid-feedback">Category should be valid </div>
+                     </div>
+                 </div>
+
+                <!-- ------------------------------------------------------ -->
+               
+                 
+        
+                 <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input name="listing[location]"
+                     placeholder="Indore" 
+                    type="text"
+                    class="form-control"
+                    required/>
+                    <div class="invalid-feedback">location should be valid</div>
+                 </div>
+                  
+                  <button class="btn btn-dark add-btn">Add</button>
+                  <br><br>
+                </form>
+        </div>
+ </div>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Village Reporting Flow</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f4f4ff;
+      color: #333;
+      padding: 30px 10px;
+      text-align: center;
+    }
+
+    .flow-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .level {
+      position: relative;
+      margin: 20px 0;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #2e7d32;
+      background: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    .level::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      height: 40px;
+      width: 2px;
+      background: #aaa;
+      transform: translateX(-50%);
+    }
+
+    .level:last-of-type::after {
+      display: none;
+    }
+
+    .departments {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .departments::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      width: 60%;
+      height: 2px;
+      background: #aaa;
+      transform: translateX(-50%);
+    }
+
+    .department {
+      background: #e1dfff;
+      padding: 15px;
+      border-radius: 10px;
+      width: 200px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .department::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      height: 40px;
+      width: 2px;
+      background: #aaa;
+      transform: translateX(-50%);
+    }
+
+    .department h3 {
+      margin: 0;
+      color: #6a1b9a;
+      font-size: 16px;
+    }
+
+    .complaint-box {
+      margin-top: 10px;
+      background: #c3bfff;
+      padding: 8px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .upload-box {
+      margin-top: 60px;
+      background: #dcd2ff;
+      padding: 15px 30px;
+      border-radius: 12px;
+      font-size: 18px;
+      display: inline-block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .home-btn {
+      position: fixed;
+      top: 20px; /* Move to the top */
+      left: 20px; /* Move to the left */
+      width: 60px;
+      height: 60px;
+      background: #6a1b9a;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .home-btn:hover {
+      background: #4a0072;
+      transform: scale(1.1);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .departments {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .departments::before {
+        width: 2px;
+        height: 100px;
+        left: 50%;
+        top: -50px;
+      }
+
+      .department::before {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📋 Village Reporting Workflow / ग्रामीण रिपोर्टिंग प्रक्रिया</h1>
+
+  <div class="flow-container">
+    
+    <div class="level">
+      <div class="title">👤 Village Head (Sarpanch)<br>👤 ग्राम प्रधान (सरपंच)</div>
+    </div>
+
+    <div class="level">
+      <div class="title">👥 Elected Body<br>👥 निर्वाचित निकाय</div>
+    </div>
+
+    <div class="level">
+      <div class="title">🏢 Departments<br>🏢 विभाग</div>
+    </div>
+
+    <div class="departments">
+      <div class="department">
+        <h3>🩺 Public Health<br>स्वास्थ्य विभाग</h3>
+        <div class="complaint-box">Zone 1 Complaint Box<br>क्षेत्र 1 शिकायत बॉक्स</div>
+      </div>
+      <div class="department">
+        <h3>📚 Education<br>शिक्षा विभाग</h3>
+        <div class="complaint-box">Zone 2 Complaint Box<br>क्षेत्र 2 शिकायत बॉक्स</div>
+      </div>
+      <div class="department">
+        <h3>🗑 Waste Management<br>कचरा प्रबंधन</h3>
+        <div class="complaint-box">Zone 3 Complaint Box<br>क्षेत्र 3 शिकायत बॉक्स</div>
+      </div>
+      <div class="department">
+        <h3>🚰 Water Management<br>जल प्रबंधन</h3>
+        <div class="complaint-box">Zone 4 Complaint Box<br>क्षेत्र 4 शिकायत बॉक्स</div>
+      </div>
+    </div>
+
+    <div class="upload-box">
+      📸 Upload Image & Location<br>
+      📸 छवि और स्थान अपलोड करें
+    </div>
+
+  </div>
+
+  
+<button class="home-btn" onclick="location.href='/'">🏠</button>
+
+</body>
+</html>

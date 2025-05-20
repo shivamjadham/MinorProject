@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Education Issues</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fce4ec, #e1f5fe);
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-theme {
+      background: linear-gradient(to bottom right, #1c1c1c, #2e2e2e);
+      color: #fff;
+    }
+    .top-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+    .left-controls,
+    .right-controls {
+      display: flex;
+      gap: 1rem;
+    }
+    select, .toggle-theme {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    header {
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+    .btn {
+      background: #1565c0;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1rem;
+      display: inline-block;
+      margin-top: 1.5rem;
+    }
+    .btn:hover {
+      background: #0d47a1;
+    }
+    .home-btn {
+      position: absolute;
+      top: 5rem; /* Adjust this value to position the button below the toggle button */
+      right: 1rem;
+    }
+    .home-btn a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+      background-color: #4caf50;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .home-btn a:hover {
+      background-color: #45a049;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body class="light-theme">
+  <div class="top-controls">
+    <div class="left-controls">
+      <select id="languageSwitcher" onchange="switchLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="hi">हिंदी</option>
+      </select>
+    </div>
+    <div class="right-controls">
+      <button class="toggle-theme" onclick="toggleTheme()">Toggle Theme</button>
+    </div>
+  </div>
+
+  <!-- Circular Home Button -->
+  <div class="home-btn">
+    <a href='/' title="Go to Home Page">🏠</a>
+  </div>
+
+  <header>
+    <h1 id="page-title">Education Issues</h1>
+  </header>
+
+  <div class="container">
+    <p id="desc1">
+      Education is the foundation for societal growth. However, many villages and towns face a lack of proper schooling, poor infrastructure, and shortage of qualified teachers.
+    </p>
+    <p id="desc2">
+      You can use this section to report problems like absence of schools, unsafe buildings, lack of staff, or missing facilities like toilets and clean water.
+    </p>
+    <p id="desc3">
+      🛠️ <strong>How You Can Help:</strong> Organize tuition classes locally, raise funds for supplies, or request authorities for mobile schooling and awareness drives.
+    </p>
+    <p id="schemes">
+      🏫 <strong>Government Schemes:</strong> Learn about programs like the Samagra Shiksha Abhiyan, Mid-Day Meal Scheme, and Beti Bachao Beti Padhao that support rural education. You can also check for scholarships and digital learning resources under PM eVIDYA.
+    </p>
+    <a href="/listings/category/Education" class="btn" id="reportBtn">Report Education Issue</a>
+    
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark-theme');
+    }
+
+    const translations = {
+      en: {
+        title: 'Education Issues',
+        desc1: 'Education is the foundation for societal growth. However, many villages and towns face a lack of proper schooling, poor infrastructure, and shortage of qualified teachers.',
+        desc2: 'You can use this section to report problems like absence of schools, unsafe buildings, lack of staff, or missing facilities like toilets and clean water.',
+        desc3: '🛠️ How You Can Help: Organize tuition classes locally, raise funds for supplies, or request authorities for mobile schooling and awareness drives.',
+        schemes: '🏫 Government Schemes: Learn about programs like the Samagra Shiksha Abhiyan, Mid-Day Meal Scheme, and Beti Bachao Beti Padhao that support rural education. You can also check for scholarships and digital learning resources under PM eVIDYA.',
+        report: 'Report Education Issue'
+      },
+      hi: {
+        title: 'शिक्षा से जुड़ी समस्याएँ',
+        desc1: 'शिक्षा समाज की प्रगति की नींव है। लेकिन कई गांवों और कस्बों में उचित स्कूलिंग, ढांचे और योग्य शिक्षकों की कमी है।',
+        desc2: 'आप इस अनुभाग का उपयोग स्कूलों की अनुपस्थिति, असुरक्षित इमारतों, स्टाफ की कमी, या शौचालय व स्वच्छ पानी जैसी सुविधाओं की समस्या रिपोर्ट करने के लिए कर सकते हैं।',
+        desc3: '🛠️ आप कैसे मदद कर सकते हैं: स्थानीय ट्यूशन क्लास चलाएं, ज़रूरी सामग्री के लिए धन जुटाएं या मोबाइल स्कूल और जागरूकता अभियान के लिए अधिकारियों से संपर्क करें।',
+        schemes: '🏫 सरकारी योजनाएँ: समग्र शिक्षा अभियान, मिड-डे मील योजना और बेटी बचाओ बेटी पढ़ाओ जैसी योजनाओं के बारे में जानें जो ग्रामीण शिक्षा को बढ़ावा देती हैं। पीएम ई-विद्या के तहत छात्रवृत्ति और डिजिटल लर्निंग संसाधनों की भी जांच करें।',
+        report: 'शिक्षा समस्या रिपोर्ट करें'
+      }
+    };
+
+    function switchLanguage(lang) {
+      const t = translations[lang];
+      document.getElementById('page-title').innerText = t.title;
+      document.getElementById('desc1').innerText = t.desc1;
+      document.getElementById('desc2').innerText = t.desc2;
+      document.getElementById('desc3').innerText = t.desc3;
+      document.getElementById('schemes').innerText = t.schemes;
+      document.getElementById('reportBtn').innerText = t.report;
+    }
+  </script>
+</body>
+</html>

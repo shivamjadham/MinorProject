@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Supply Issues</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    body.light-theme {
+      background-color: #f0f0f0;
+      color: #000;
+    }
+    body.dark-theme {
+      background: linear-gradient(to right, #434343, #000000);
+      color: #fff;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+    }
+    .top-bar select, .top-bar button {
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+    }
+    .container {
+      padding: 2rem;
+    }
+    .card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      max-width: 700px;
+      margin: 2rem auto;
+    }
+    .card h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .card p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .report-btn {
+      display: block;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .report-btn a {
+      background-color: #ffd54f;
+      color: #000;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .report-btn a:hover {
+      background-color: #ffca28;
+      transform: scale(1.05);
+    }
+    .home-btn {
+      position: absolute;
+      top: 5rem; /* Adjust this value to position the button below the toggle button */
+      right: 1rem;
+    }
+    .home-btn a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+      background-color: #4caf50;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .home-btn a:hover {
+      background-color: #45a049;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body class="dark-theme">
+  <div class="top-bar">
+    <select onchange="changeLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+    </select>
+    <button onclick="toggleTheme()">Toggle Theme</button>
+  </div>
+
+  <!-- Circular Home Button -->
+  <div class="home-btn">
+    
+    <a href="/" title="Go to Home Page">🏠</a>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2 id="title">💧 Water Supply Issues</h2>
+      <p id="desc">
+        Clean and sufficient water is a basic need. Many rural and urban areas face issues like water shortage, leakage, or contaminated supply. Such problems can cause serious health risks.
+      </p>
+      <p id="self-help">
+        <strong>How you can help:</strong><br>
+        💡 Use buckets instead of pipes for washing vehicles to save water.<br>
+        🧰 Fix household leaks with plumber tape or call local plumber.<br>
+        🚰 Boil water if unsure of drinking quality.<br>
+        📞 Inform your Gram Panchayat or Nagar Nigam to take quicker action.
+      </p>
+      <div class="report-btn">
+        <a href="/listings/category/WaterSupply">Report Water Issue</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light-theme');
+      document.body.classList.toggle('dark-theme');
+    }
+
+    const translations = {
+      en: {
+        title: '💧 Water Supply Issues',
+        desc: 'Clean and sufficient water is a basic need. Many rural and urban areas face issues like water shortage, leakage, or contaminated supply. Such problems can cause serious health risks.',
+        selfHelp: 'How you can help:\n\n💡 Use buckets instead of pipes for washing vehicles to save water.\n🧰 Fix household leaks with plumber tape or call local plumber.\n🚰 Boil water if unsure of drinking quality.\n📞 Inform your Gram Panchayat or Nagar Nigam to take quicker action.'
+      },
+      hi: {
+        title: '💧 पानी की आपूर्ति की समस्याएं',
+        desc: 'स्वच्छ और पर्याप्त पानी एक मूलभूत आवश्यकता है। कई ग्रामीण और शहरी क्षेत्रों में पानी की कमी, रिसाव या दूषित आपूर्ति की समस्याएं आम हैं, जो गंभीर स्वास्थ्य जोखिम पैदा कर सकती हैं।',
+        selfHelp: 'आप खुद कैसे मदद कर सकते हैं:\n\n💡 पानी बचाने के लिए गाड़ी धोने में पाइप की जगह बाल्टी का उपयोग करें।\n🧰 घर के रिसावों को प्लंबर टेप से ठीक करें या स्थानीय प्लंबर को बुलाएं।\n🚰 पीने के पानी की गुणवत्ता पर शक हो तो उसे उबाल कर पिएं।\n📞 जल्दी समाधान के लिए ग्राम पंचायत या नगर निगम को सूचित करें।'
+      }
+    };
+
+    function changeLanguage(lang) {
+      const t = translations[lang];
+      document.getElementById('title').innerText = t.title;
+      document.getElementById('desc').innerText = t.desc;
+      document.getElementById('self-help').innerHTML = '<strong>' + t.selfHelp.split('\n\n')[0] + '</strong><br>' + t.selfHelp.split('\n\n')[1].split('\n').join('<br>');
+    }
+  </script>
+</body>
+</html>

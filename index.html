@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Power</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.light-theme {
+      background: #f0f0f0;
+      color: #000;
+    }
+    body.dark-theme {
+      background: linear-gradient(to bottom right, #1e3c72, #2a5298);
+      color: white;
+    }
+    .container {
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px solid #ffffff33;
+      position: relative;
+    }
+    .header h1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .header img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+    .toggle-btn, .lang-select {
+      padding: 0.5rem 1rem;
+      background: #fff;
+      color: #1e3c72;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-left: 1rem;
+    }
+    .lang-select {
+      font-weight: normal;
+    }
+    .lang-container {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    .hero-section h2,
+    .issue-section h2,
+    .rural-info h3 {
+      text-align: center;
+    }
+    .hero-cards {
+      display: flex;
+      overflow-x: auto;
+      gap: 1.5rem;
+      padding-bottom: 1rem;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+    }
+    .hero-cards::-webkit-scrollbar {
+      display: none;
+    }
+    .hero-card {
+      min-width: 220px;
+      background: #ffffff10;
+      border-radius: 16px;
+      padding: 1rem;
+      text-align: center;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s ease-in-out;
+    }
+    .hero-card:hover {
+      transform: scale(1.05);
+    }
+    .hero-card img {
+      border-radius: 12px;
+      width: 100%;
+    }
+    .issue-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .issue-box {
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #000;
+    }
+    .issue-grid a {
+      text-decoration: none;
+    }
+    #header-title {
+      display: inline-block;
+      font-weight: bold;
+      font-size: 2.8rem;
+      color: white;
+      text-shadow: 1px 1px 5px rgba(255,255,255,0.5);
+      text-align: center;
+    }
+    .rural-info {
+      margin-top: 3rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 16px;
+    }
+    .rural-info p {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+    .rural-badge {
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      background-color: #fdd835;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      color: #333;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body class="dark-theme">
+  <section class="container">
+    <header class="header">
+      <h1 style="font-size: 2.5rem; font-weight: bold; text-align: center;">
+        <img src="https://images.seeklogo.com/logo-png/14/1/usda-rural-development-logo-png_seeklogo-146666.png" alt="Earth Logo">
+        <span id="header-title">Community Power</span>
+      </h1>
+      <div class="lang-container">
+        <select class="lang-select" onchange="changeLanguage(this.value)">
+          <option value="en">English</option>
+          <option value="hi">हिंदी</option>
+        </select>
+        <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+      </div>
+    </header>
+
+    <div class="rural-badge" id="rural-badge">🌿 Specially designed for Villages & Rural Communities</div>
+
+    <section class="rural-info">
+      <h3 id="rural-heading">🌾 Empowering Rural Voices</h3>
+      <p id="rural-desc">This platform is specially designed for villages and rural communities, making it easy for every citizen — even without internet — to report issues, raise concerns, and celebrate local heroes.</p>
+    </section>
+
+    <section class="hero-section" style="margin-top: 2.5rem;">
+      <h2 id="hero-heading" style="font-size: 2rem; margin-bottom: 1rem;">✨ Meet Our Everyday Heroes</h2>
+      <div class="hero-cards">
+        <div class="hero-card">
+          <img src="https://source.unsplash.com/300x200/?cleaning,india" alt="Cleanliness Hero">
+          <h4 id="hero1-sub">Cleanliness Hero</h4>
+          <p>Leading local drives to keep streets and surroundings clean.</p>
+        </div>
+        <div class="hero-card">
+          <img src="https://source.unsplash.com/300x200/?women,empowerment" alt="Women Empowerment">
+          <h4 id="hero2-sub">Women Empowerment</h4>
+          <p>Empowering women through skill training and support groups.</p>
+        </div>
+        <div class="hero-card">
+          <img src="https://source.unsplash.com/300x200/?water,conservation" alt="Water Warrior">
+          <h4 id="hero3-sub">Water Warrior</h4>
+          <p>Working to conserve water and improve village water access.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="issue-section" style="margin-top: 3rem;">
+      <h2 id="issue-heading" style="font-size: 2rem; margin-bottom: 1.5rem;">📢 Report a Public Issue</h2>
+      <div class="issue-grid">
+        <a href="C:\Users\risha\OneDrive\Desktop\Hackathon Project\RoadIsssue.html" style="text-decoration: none;">
+          <div class="issue-box" style="background: #ffcc80;" id="cat1">🚧 Road Damage</div>
+        </a>
+        <a href="C:\Users\risha\OneDrive\Desktop\Hackathon Project\WaterIssue.html" style="text-decoration: none;">
+          <div class="issue-box" style="background: #80deea;" id="cat2">🚱 Water Supply</div>
+        </a>
+        <a href="C:\Users\risha\OneDrive\Desktop\Hackathon Project\ElectricityIssue.html" style="text-decoration: none;">
+          <div class="issue-box" style="background: #aed581;" id="cat3">💡 Electricity</div>
+        </a>
+        <a href="C:\Users\risha\OneDrive\Desktop\Hackathon Project\SenitationIssue.html" style="text-decoration: none;">
+          <div class="issue-box" style="background: #f48fb1;" id="cat4">🧼 Sanitation</div>
+        </a>
+        <a href="C:\Users\risha\OneDrive\Desktop\Hackathon Project\HealthCare.html" style="text-decoration: none;">
+          <div class="issue-box" style="background: #ffab91;" id="cat5">🏥 Healthcare</div>
+        </a>
+        <a href="C:\Users\risha\OneDrive\Desktop\Hackathon Project\EducationIssue.html" style="text-decoration: none;">
+          <div class="issue-box" style="background: #b39ddb;" id="cat6">🎓 Education</div>
+        </a>
+      </div>
+    </section>
+  </section>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light-theme');
+      document.body.classList.toggle('dark-theme');
+    }
+
+    function toggleTheme() {
+    document.body.classList.toggle('light-theme');
+    document.body.classList.toggle('dark-theme');
+
+    const headerTitle = document.getElementById('header-title');
+    if (document.body.classList.contains('light-theme')) {
+      headerTitle.style.color = 'black'; // Change to black in light theme
+    } else {
+      headerTitle.style.color = 'white'; // Change back to white in dark theme
+    }
+  }
+
+
+    const translations = {
+      en: {
+        header: 'Community Power',
+        ruralBadge: '🌿 Specially designed for Villages & Rural Communities',
+        ruralHeading: '🌾 Empowering Rural Voices',
+        ruralDesc: 'This platform is specially designed for villages and rural communities, making it easy for every citizen — even without internet — to report issues, raise concerns, and celebrate local heroes.',
+        heroHeading: '✨ Meet Our Everyday Heroes',
+        cat1: '🚧 Road Damage',
+        cat2: '🚱 Water Supply',
+        cat3: '💡 Electricity',
+        cat4: '🧼 Sanitation',
+        cat5: '🏥 Healthcare',
+        cat6: '🎓 Education'
+      },
+      hi: {
+        header: 'समुदाय की शक्ति',
+        ruralBadge: '🌿 गांवों और ग्रामीण समुदायों के लिए विशेष रूप से डिज़ाइन किया गया',
+        ruralHeading: '🌾 ग्रामीण आवाज़ों को सशक्त बनाना',
+        ruralDesc: 'यह प्लेटफ़ॉर्म विशेष रूप से गांवों और ग्रामीण समुदायों के लिए डिज़ाइन किया गया है, जिससे हर नागरिक — यहां तक कि बिना इंटरनेट के — समस्याओं की रिपोर्ट कर सके, चिंताओं को उठा सके और स्थानीय नायकों का जश्न मना सके।',
+        heroHeading: '✨ हमारे रोज़ के नायकों से मिलिए',
+        cat1: '🚧 सड़क की समस्या',
+        cat2: '🚱 पानी की आपूर्ति',
+        cat3: '💡 बिजली',
+        cat4: '🧼 स्वच्छता',
+        cat5: '🏥 स्वास्थ्य सेवा',
+        cat6: '🎓 शिक्षा'
+      }
+    };
+
+    function changeLanguage(lang) {
+      const t = translations[lang];
+      document.getElementById('header-title').innerText = t.header;
+      document.getElementById('rural-badge').innerText = t.ruralBadge;
+      document.getElementById('rural-heading').innerText = t.ruralHeading;
+      document.getElementById('rural-desc').innerText = t.ruralDesc;
+      document.getElementById('hero-heading').innerText = t.heroHeading;
+      document.getElementById('cat1').innerText = t.cat1;
+      document.getElementById('cat2').innerText = t.cat2;
+      document.getElementById('cat3').innerText = t.cat3;
+      document.getElementById('cat4').innerText = t.cat4;
+      document.getElementById('cat5').innerText = t.cat5;
+      document.getElementById('cat6').innerText = t.cat6;
+    }
+  </script>
+</body>
+</html>

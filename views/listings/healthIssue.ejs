@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Issues</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-theme {
+      background: linear-gradient(to bottom right, #1b1b1b, #2d2d2d);
+      color: #fff;
+    }
+    .top-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+    .left-controls,
+    .right-controls {
+      display: flex;
+      gap: 1rem;
+    }
+    select, .toggle-theme {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    header {
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+    .btn {
+      background: #0288d1;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1rem;
+      display: inline-block;
+      margin-top: 1.5rem;
+    }
+    .btn:hover {
+      background: #01579b;
+    }
+    .home-btn {
+      position: absolute;
+      top: 5rem; /* Adjust this value to position the button below the toggle button */
+      right: 1rem;
+    }
+    .home-btn a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+      background-color: #4caf50;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .home-btn a:hover {
+      background-color: #45a049;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body class="light-theme">
+  <div class="top-controls">
+    <div class="left-controls">
+      <select id="languageSwitcher" onchange="switchLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="hi">हिंदी</option>
+      </select>
+    </div>
+    <div class="right-controls">
+      <button class="toggle-theme" onclick="toggleTheme()">Toggle Theme</button>
+    </div>
+  </div>
+
+  <!-- Circular Home Button -->
+  <div class="home-btn">
+    <a href='/' title="Go to Home Page">🏠</a>
+  </div>
+
+  <header>
+    <h1 id="page-title">Health Issues</h1>
+  </header>
+
+  <div class="container">
+    <p id="desc1">
+      Access to basic health facilities is crucial for a healthy society. Lack of clinics, medical staff, or sanitation can severely impact community well-being.
+    </p>
+    <p id="desc2">
+      Use this section to report issues like lack of medical services, unavailability of medicines, or unhygienic health centers in your area.
+    </p>
+    <p id="desc3">
+      🛠️ <strong>How You Can Help:</strong> Promote basic hygiene practices, support local health camps, and educate others about first-aid and preventive healthcare.
+    </p>
+    <p id="desc4">
+      🏥 <strong>Government Schemes:</strong> You may be eligible for schemes like Ayushman Bharat, Janani Suraksha Yojana, or free vaccinations under national health programs. Contact your local health officer or visit your nearest Primary Health Center (PHC) for more info.
+    </p>
+    <a href="/listings/category/HealthCare" class="btn" id="reportBtn">Report Health Issue</a>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark-theme');
+    }
+
+    const translations = {
+      en: {
+        title: 'Health Issues',
+        desc1: 'Access to basic health facilities is crucial for a healthy society. Lack of clinics, medical staff, or sanitation can severely impact community well-being.',
+        desc2: 'Use this section to report issues like lack of medical services, unavailability of medicines, or unhygienic health centers in your area.',
+        desc3: '🛠️ How You Can Help: Promote basic hygiene practices, support local health camps, and educate others about first-aid and preventive healthcare.',
+        desc4: '🏥 Government Schemes: You may be eligible for schemes like Ayushman Bharat, Janani Suraksha Yojana, or free vaccinations under national health programs. Contact your local health officer or visit your nearest Primary Health Center (PHC) for more info.',
+        report: 'Report Health Issue'
+      },
+      hi: {
+        title: 'स्वास्थ्य समस्याएँ',
+        desc1: 'स्वास्थ्य सेवाओं तक पहुंच एक स्वस्थ समाज के लिए अत्यंत आवश्यक है। अस्पतालों की कमी, मेडिकल स्टाफ की अनुपस्थिति या गंदगी समुदाय के स्वास्थ्य पर नकारात्मक असर डाल सकती है।',
+        desc2: 'इस अनुभाग में आप चिकित्सा सेवाओं की कमी, दवाओं की अनुपलब्धता, या अस्वच्छ स्वास्थ्य केंद्र जैसी समस्याओं की रिपोर्ट कर सकते हैं।',
+        desc3: '🛠️ आप कैसे मदद कर सकते हैं: बुनियादी स्वच्छता के नियमों का प्रचार करें, स्वास्थ्य शिविरों में सहयोग करें, और प्राथमिक चिकित्सा व बचाव उपायों के बारे में जागरूकता फैलाएं।',
+        desc4: '🏥 सरकारी योजनाएँ: आप आयुष्मान भारत, जननी सुरक्षा योजना, या राष्ट्रीय स्वास्थ्य कार्यक्रमों के तहत मुफ्त टीकाकरण जैसी योजनाओं के पात्र हो सकते हैं। अधिक जानकारी के लिए अपने स्थानीय स्वास्थ्य अधिकारी से संपर्क करें या अपने निकटतम प्राथमिक स्वास्थ्य केंद्र (PHC) पर जाएँ।',
+        report: 'स्वास्थ्य समस्या रिपोर्ट करें'
+      }
+    };
+
+    function switchLanguage(lang) {
+      const t = translations[lang];
+      document.getElementById('page-title').innerText = t.title;
+      document.getElementById('desc1').innerText = t.desc1;
+      document.getElementById('desc2').innerText = t.desc2;
+      document.getElementById('desc3').innerText = t.desc3;
+      document.getElementById('desc4').innerText = t.desc4;
+      document.getElementById('reportBtn').innerText = t.report;
+    }
+
+    <a href="telemedicine.html" class="telemedicine-btn">Telemedicine</a>
+  </script>
+</body>
+</html>

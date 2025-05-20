@@ -1,0 +1,50 @@
+<% layout("/layouts/boilerplate") %>
+
+<body style="background-color: #f4f6f9; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0;">
+  <header style="background-color: #1e88e5; color: white; padding: 1.5rem; text-align: center; font-size: 2rem; font-weight: bold; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    Admin Dashboard - Manage Listings
+  </header>
+
+  <div class="container" style="max-width: 1200px; margin: 2rem auto; padding: 1rem;">
+    <h3 style="font-size: 1.8rem; font-weight: bold; color: #333; margin-bottom: 1.5rem;">All Listings</h3>
+
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem;">
+      <thead>
+        <tr style="background-color: #f5f5f5; color: #555; text-align: left;">
+          <th style="padding: 1rem; border-bottom: 1px solid #ddd;">Title</th>
+          <th style="padding: 1rem; border-bottom: 1px solid #ddd;">Category</th>
+          <th style="padding: 1rem; border-bottom: 1px solid #ddd;">Status</th>
+          <th style="padding: 1rem; border-bottom: 1px solid #ddd;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let listing of allListings) { %>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;"><%= listing.title %></td>
+            <td style="padding: 1rem;"><%= listing.category %></td>
+            <td style="padding: 1rem; font-weight: bold;" class="<%= listing.status === 'success' ? 'text-success' : 'text-warning' %>">
+              <%= listing.status %>
+            </td>
+            <td style="padding: 1rem;">
+              <% if (currUser && currUser.username === "ram") { %>
+                <form method="POST" action="/listings/<%= listing._id %>/status?_method=PUT" style="display: inline;">
+                  <input type="hidden" name="status" value="success" />
+                  <button type="submit" style="background-color: #4caf50; color: white; padding: 0.5rem 1rem; border: none; border-radius: 5px; cursor: pointer;">
+                    Mark Success
+                  </button>
+                </form>
+                
+              <% } else { %>
+                <p style="color: red; font-weight: bold;">You are not authorized to update the status.</p>
+              <% } %>
+            </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <footer style="text-align: center; margin-top: 2rem; padding: 1rem; background-color: #1e88e5; color: white; font-size: 0.9rem;">
+    &copy; 2025 Admin Dashboard. All rights reserved.
+  </footer>
+</body>
